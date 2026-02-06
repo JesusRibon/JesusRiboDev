@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply bg-dark text-gray-100 antialiased;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  /* Card hover effects */
+  .card-hover {
+    @apply transition-all duration-300 ease-out;
+  }
+  .card-hover:hover {
+    @apply -translate-y-1;
+    box-shadow: 0 20px 40px -15px rgba(59, 130, 246, 0.15);
+  }
+}
+
+/* Scroll-triggered animations */
+.animate-initial {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-visible {
+  opacity: 1 !important;
+  transform: translateY(0) translateX(0) scale(1) !important;
+}
+
+.animate-fade-up.animate-initial {
+  transform: translateY(30px);
+}
+.animate-fade-up.animate-visible {
+  transform: translateY(0);
+}
+
+.animate-fade-down.animate-initial {
+  transform: translateY(-30px);
+}
+.animate-fade-down.animate-visible {
+  transform: translateY(0);
+}
+
+.animate-fade-in.animate-initial {
+  transform: none;
+}
+.animate-fade-in.animate-visible {
+  transform: none;
+}
+
+.animate-slide-left.animate-initial {
+  transform: translateX(40px);
+  opacity: 0;
+}
+.animate-slide-left.animate-visible {
+  transform: translateX(0);
+}
+
+.animate-slide-right.animate-initial {
+  transform: translateX(-40px);
+  opacity: 0;
+}
+.animate-slide-right.animate-visible {
+  transform: translateX(0);
+}
+
+.animate-zoom-in.animate-initial {
+  transform: scale(0.9);
+}
+.animate-zoom-in.animate-visible {
+  transform: scale(1);
+}

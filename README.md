@@ -14,6 +14,21 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
+## Despliegue en Vercel
+
+El proyecto está configurado para desplegarse en [Vercel](https://vercel.com):
+
+1. **Conectar el repositorio**: Sube el proyecto a GitHub/GitLab/Bitbucket y conéctalo en [vercel.com/new](https://vercel.com/new).
+
+2. **Configuración automática**: Vercel detectará la configuración en `vercel.json`:
+   - Build: `npm run build`
+   - Output: `dist/jesus-ribo-dev/browser`
+   - Routing SPA: todas las rutas se redirigen a `index.html`
+
+3. **Despliegue**: Cada push a la rama principal generará un despliegue automático.
+
+4. **CLI (opcional)**: `npm i -g vercel` y ejecuta `vercel` en la raíz del proyecto.
+
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).

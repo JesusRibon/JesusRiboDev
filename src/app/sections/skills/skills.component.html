@@ -1,0 +1,171 @@
+<section id="skills" class="section-padding bg-dark-light/30">
+  <div class="container-custom">
+
+    <app-section-title 
+      title="Skills & Tecnologías" 
+      subtitle="Stack tecnológico y herramientas que domino">
+    </app-section-title>
+
+    <div class="max-w-6xl mx-auto space-y-12">
+
+      <div>
+        <h3 class="text-2xl font-bold text-white mb-6 text-center">
+          Stack Principal
+        </h3>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+
+          @for (skill of mainStack; track skill.name; let i = $index) {
+
+            <div
+              class="bg-dark-light border border-white/10 rounded-xl p-4 text-center
+                     card-hover hover:border-primary/50"
+              appScrollAnimate="zoom-in"
+              [animateDelay]="i * 80"
+            >
+
+              <i
+                class="text-4xl mb-3 block"
+                [class]="skill.icon">
+              </i>
+
+              <p class="text-white font-semibold mb-2">
+                {{ skill.name }}
+              </p>
+
+              <div class="w-full bg-dark-lighter rounded-full h-2">
+                <div
+                  [class]="getLevelColor(skill.level)"
+                  [style.width]="getLevelWidth(skill.level)"
+                  class="h-2 rounded-full transition-all duration-500">
+                </div>
+              </div>
+
+              <p class="text-xs text-gray-400 mt-2">
+                {{ skill.level }}
+              </p>
+
+            </div>
+
+          }
+
+        </div>
+      </div>
+
+      <div>
+
+        <div
+          class="flex flex-wrap justify-center gap-2 mb-8
+                 border-b border-white/10 pb-4"
+        >
+
+          @for (category of categories; track category.name; let i = $index) {
+
+            <button
+              (click)="setActiveTab(i)"
+              [class]="
+                'px-6 py-3 rounded-lg font-medium transition-colors ' +
+                (activeTab() === i
+                  ? 'bg-primary text-white'
+                  : 'text-gray-400 hover:text-white hover:bg-dark-light')
+              "
+            >
+              {{ category.name }}
+            </button>
+
+          }
+
+        </div>
+
+
+        <div
+          class="bg-dark-light border border-white/10
+                 rounded-2xl p-8 card-hover hover:border-primary/30"
+          appScrollAnimate="fade-up"
+        >
+
+          @for (category of categories; track category.name; let i = $index) {
+
+            @if (activeTab() === i) {
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                @for (skill of category.skills; track skill.name) {
+
+                  <div>
+
+                    <div
+                      class="flex items-center justify-between mb-2"
+                    >
+
+                      <div class="flex items-center gap-2">
+                        <i
+                          class="text-xl"
+                          [class]="skill.icon">
+                        </i>
+
+                        <span class="text-white font-medium">
+                          {{ skill.name }}
+                        </span>
+
+                      </div>
+
+                      <span class="text-sm text-gray-400">
+                        {{ skill.level }}
+                      </span>
+
+                    </div>
+
+                    <div class="w-full bg-dark-lighter rounded-full h-3">
+
+                      <div
+                        [class]="getLevelColor(skill.level)"
+                        [style.width]="getLevelWidth(skill.level)"
+                        class="h-3 rounded-full transition-all duration-500">
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                }
+
+              </div>
+
+            }
+
+          }
+
+        </div>
+
+      </div>
+
+
+      <div>
+      <h3 class="text-xl font-bold text-white mb-4 text-center">
+          Otras Tecnologías
+        </h3>
+
+        <div class="flex flex-wrap justify-center gap-2">
+
+          @for (category of categories; track category.name) {
+
+            @for (skill of category.skills; track skill.name) {
+
+              <app-badge
+                [text]="skill.name"
+                variant="outline">
+              </app-badge>
+
+            }
+
+          }
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
