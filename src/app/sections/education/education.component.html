@@ -1,13 +1,13 @@
 <section id="educacion" class="section-padding">
   <div class="container-custom">
     <app-section-title 
-      title="Educación" 
-      subtitle="Formación académica y profesional">
+      [title]="'education.title' | translate" 
+      [subtitle]="'education.subtitle' | translate">
     </app-section-title>
 
     <div class="max-w-4xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        @for (edu of education; track edu.institution; let i = $index) {
+        @for (edu of education; track edu.degreeKey; let i = $index) {
           <div class="bg-dark-light border border-white/10 rounded-2xl p-6 card-hover hover:border-primary/50" appScrollAnimate="fade-up" [animateDelay]="i * 120">
             <div class="flex items-start justify-between mb-4">
               <div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -15,15 +15,13 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                 </svg>
               </div>
-              @if (edu.status === 'Finalizada') {
-                <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">
-                  Finalizada
-                </span>
-              }
+              <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">
+                {{ edu.statusKey | translate }}
+              </span>
             </div>
             
-            <h3 class="text-xl font-bold text-white mb-2">{{ edu.degree }}</h3>
-            <p class="text-primary font-semibold mb-3">{{ edu.institution }}</p>
+            <h3 class="text-xl font-bold text-white mb-2">{{ edu.degreeKey | translate }}</h3>
+            <p class="text-primary font-semibold mb-3">{{ edu.institutionKey | translate }}</p>
             
             <div class="space-y-2 text-sm text-gray-400">
               <div class="flex items-center gap-2">
@@ -46,17 +44,13 @@
 
       <!-- Interests -->
       <div class="mt-12" appScrollAnimate="fade-up">
-        <h3 class="text-2xl font-bold text-white mb-6 text-center">Intereses</h3>
+        <h3 class="text-2xl font-bold text-white mb-6 text-center">{{ 'education.interests' | translate }}</h3>
         <div class="flex flex-wrap justify-center gap-3">
-          <span class="px-4 py-2 bg-dark-light border border-white/10 rounded-full text-gray-300 hover:border-primary/50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
-            Infraestructura como código
-          </span>
-          <span class="px-4 py-2 bg-dark-light border border-white/10 rounded-full text-gray-300 hover:border-primary/50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
-            Telecomunicaciones y Redes
-          </span>
-          <span class="px-4 py-2 bg-dark-light border border-white/10 rounded-full text-gray-300 hover:border-primary/50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
-            AWS
-          </span>
+          @for (interest of interests; track interest) {
+            <span class="px-4 py-2 bg-dark-light border border-white/10 rounded-full text-gray-300 hover:border-primary/50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
+              {{ interest | translate }}
+            </span>
+          }
         </div>
       </div>
     </div>

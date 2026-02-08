@@ -17,18 +17,17 @@
           </h1>
 
           <h2 class="text-xl md:text-2xl text-gray-300 font-medium">
-            Ingeniero de Sistemas / Full Stack Developer
+            {{ 'hero.subtitle' | translate }}
           </h2>
 
           <p class="text-lg text-gray-400 max-w-xl">
-            Angular 12+, MicroFrontends, Microservicios, .NET, Node.js, Spring
-            Boot
+            {{ 'hero.techStack' | translate }}
           </p>
         </div>
 
         <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
           <app-button
-            text="Descargar CV"
+            [text]="'hero.downloadCv' | translate"
             variant="primary"
             [href]="cvUrl"
             target="_blank"
@@ -36,7 +35,7 @@
           </app-button>
 
           <app-button
-            text="LinkedIn"
+            [text]="'hero.linkedIn' | translate"
             variant="outline"
             [href]="linkedinUrl"
             target="_blank"
@@ -44,7 +43,7 @@
           </app-button>
 
           <app-button
-            text="Enviar correo"
+            [text]="'hero.sendEmail' | translate"
             variant="secondary"
             [href]="'mailto:' + email"
           >
@@ -52,7 +51,7 @@
         </div>
 
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8">
-          @for (highlight of highlights; track highlight.text; let i = $index) {
+          @for (highlight of highlights; track highlight.textKey; let i = $index) {
             <div
               class="bg-dark-light border border-white/10 rounded-xl p-4 text-center card-hover hover:border-primary/50"
               appScrollAnimate="zoom-in"
@@ -61,7 +60,7 @@
               <i class="text-3xl mb-2 block" [class]="highlight.icon"> </i>
 
               <p class="text-sm text-gray-300 font-medium">
-                {{ highlight.text }}
+                {{ highlight.textKey | translate }}
               </p>
             </div>
           }
@@ -85,9 +84,9 @@
               </div>
 
               <div>
-                <h3 class="text-white font-semibold">Desarrollo Full Stack</h3>
+                <h3 class="text-white font-semibold">{{ 'hero.fullStackDev' | translate }}</h3>
                 <p class="text-gray-400 text-sm">
-                  Aplicaciones web dinámicas y escalables
+                  {{ 'hero.fullStackDesc' | translate }}
                 </p>
               </div>
             </div>
@@ -100,9 +99,9 @@
               </div>
 
               <div>
-                <h3 class="text-white font-semibold">Arquitectura Moderna</h3>
+                <h3 class="text-white font-semibold">{{ 'hero.modernArch' | translate }}</h3>
                 <p class="text-gray-400 text-sm">
-                  Microservicios y MicroFrontends
+                  {{ 'hero.modernArchDesc' | translate }}
                 </p>
               </div>
             </div>
@@ -115,9 +114,9 @@
               </div>
 
               <div>
-                <h3 class="text-white font-semibold">Rendimiento y UX</h3>
+                <h3 class="text-white font-semibold">{{ 'hero.perfUx' | translate }}</h3>
                 <p class="text-gray-400 text-sm">
-                  Optimización y escalabilidad
+                  {{ 'hero.perfUxDesc' | translate }}
                 </p>
               </div>
             </div>

@@ -1,8 +1,8 @@
 <section id="experiencia" class="section-padding">
   <div class="container-custom">
     <app-section-title 
-      title="Experiencia Profesional" 
-      subtitle="Más de 2 años desarrollando soluciones tecnológicas innovadoras">
+      [title]="'experience.title' | translate" 
+      [subtitle]="'experience.subtitle' | translate">
     </app-section-title>
 
     <div class="max-w-5xl mx-auto">
@@ -11,7 +11,7 @@
         <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary to-accent"></div>
         
         <div class="space-y-12">
-          @for (exp of experiences; track exp.company; let i = $index) {
+          @for (exp of experiences; track exp.companyKey; let i = $index) {
             <div class="relative flex gap-8">
               <!-- Timeline dot -->
               <div class="flex-shrink-0 w-16 flex justify-center">
@@ -22,8 +22,8 @@
               <div class="flex-1 bg-dark-light border border-white/10 rounded-2xl p-8 card-hover hover:border-primary/50" appScrollAnimate="slide-right" [animateDelay]="i * 150">
                 <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
                   <div>
-                    <h3 class="text-2xl font-bold text-white mb-2">{{ exp.position }}</h3>
-                    <p class="text-xl text-primary font-semibold mb-1">{{ exp.company }}</p>
+                    <h3 class="text-2xl font-bold text-white mb-2">{{ exp.positionKey | translate }}</h3>
+                    <p class="text-xl text-primary font-semibold mb-1">{{ exp.companyKey | translate }}</p>
                     <p class="text-gray-400 flex items-center gap-2">
                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
@@ -39,12 +39,12 @@
 
                 <!-- Responsibilities -->
                 <div class="mb-6">
-                  <h4 class="text-lg font-semibold text-white mb-3">Responsabilidades clave</h4>
+                  <h4 class="text-lg font-semibold text-white mb-3">{{ 'experience.keyResponsibilities' | translate }}</h4>
                   <ul class="space-y-2">
-                    @for (resp of exp.responsibilities; track resp) {
+                    @for (resp of exp.responsibilityKeys; track resp) {
                       <li class="flex items-start gap-2 text-gray-300">
                         <span class="text-primary mt-1.5">•</span>
-                        <span>{{ resp }}</span>
+                        <span>{{ resp | translate }}</span>
                       </li>
                     }
                   </ul>
@@ -59,7 +59,7 @@
 
                 @if (exp.achievement) {
                   <div class="mt-6 p-4 bg-primary/10 border border-primary/30 rounded-lg">
-                    <p class="text-sm text-primary font-medium">Logro destacado:</p>
+                    <p class="text-sm text-primary font-medium">{{ 'experience.achievementLabel' | translate }}</p>
                     <p class="text-gray-300 mt-1">{{ exp.achievement }}</p>
                   </div>
                 }
@@ -71,22 +71,22 @@
 
       <!-- Mobile/Tablet Cards -->
       <div class="lg:hidden space-y-6">
-        @for (exp of experiences; track exp.company; let i = $index) {
+        @for (exp of experiences; track exp.companyKey; let i = $index) {
           <div class="bg-dark-light border border-white/10 rounded-2xl p-6 card-hover hover:border-primary/50" appScrollAnimate="fade-up" [animateDelay]="i * 150">
             <div class="mb-6">
-              <h3 class="text-xl font-bold text-white mb-2">{{ exp.position }}</h3>
-              <p class="text-lg text-primary font-semibold mb-1">{{ exp.company }}</p>
+              <h3 class="text-xl font-bold text-white mb-2">{{ exp.positionKey | translate }}</h3>
+              <p class="text-lg text-primary font-semibold mb-1">{{ exp.companyKey | translate }}</p>
               <p class="text-gray-400 text-sm mb-2">{{ exp.location }}</p>
               <p class="text-gray-400 text-sm">{{ exp.startDate }} - {{ exp.endDate }}</p>
             </div>
 
             <div class="mb-6">
-              <h4 class="text-base font-semibold text-white mb-3">Responsabilidades clave</h4>
+              <h4 class="text-base font-semibold text-white mb-3">{{ 'experience.keyResponsibilities' | translate }}</h4>
               <ul class="space-y-2">
-                @for (resp of exp.responsibilities; track resp) {
+                @for (resp of exp.responsibilityKeys; track resp) {
                   <li class="flex items-start gap-2 text-sm text-gray-300">
                     <span class="text-primary mt-1">•</span>
-                    <span>{{ resp }}</span>
+                    <span>{{ resp | translate }}</span>
                   </li>
                 }
               </ul>

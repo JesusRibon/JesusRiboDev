@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { NavbarComponent } from './core/layout/navbar/navbar.component';
 import { FooterComponent } from './core/layout/footer/footer.component';
 
@@ -12,4 +13,9 @@ import { FooterComponent } from './core/layout/footer/footer.component';
 })
 export class AppComponent {
   title = 'JesusRiboDev';
+
+  constructor(private translate: TranslateService) {
+    this.translate.setFallbackLang('es');
+    this.translate.use('es');
+  }
 }

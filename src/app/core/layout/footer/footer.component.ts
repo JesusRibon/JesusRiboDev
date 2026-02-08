@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 import { ScrollAnimateDirective } from '../../../shared/directives';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [CommonModule, ScrollAnimateDirective],
+  imports: [CommonModule, TranslateModule, ScrollAnimateDirective],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.css'
 })

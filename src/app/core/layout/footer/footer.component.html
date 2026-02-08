@@ -8,7 +8,7 @@
           <span>Jesus Ribon</span>
         </div>
         <p class="text-gray-400 text-sm mb-4">
-          Desarrollador Full Stack especializado en Angular, MicroFrontends y Microservicios.
+          {{ 'footer.description' | translate }}
         </p>
         <div class="flex gap-4">
           <a href="https://linkedin.com/in/jesus-ribon" target="_blank" class="text-gray-400 hover:text-primary transition-colors">
@@ -26,39 +26,39 @@
 
       <!-- Quick Links -->
       <div>
-        <h3 class="text-white font-semibold mb-4">Enlaces Rápidos</h3>
+        <h3 class="text-white font-semibold mb-4">{{ 'footer.quickLinks' | translate }}</h3>
         <ul class="space-y-2">
           <li>
-            <a (click)="scrollToSection('inicio')" class="text-gray-400 hover:text-primary transition-colors cursor-pointer">Inicio</a>
+            <a (click)="scrollToSection('inicio')" class="text-gray-400 hover:text-primary transition-colors cursor-pointer">{{ 'navbar.home' | translate }}</a>
           </li>
           <li>
-            <a (click)="scrollToSection('sobre-mi')" class="text-gray-400 hover:text-primary transition-colors cursor-pointer">Sobre mí</a>
+            <a (click)="scrollToSection('sobre-mi')" class="text-gray-400 hover:text-primary transition-colors cursor-pointer">{{ 'navbar.about' | translate }}</a>
           </li>
           <li>
-            <a (click)="scrollToSection('experiencia')" class="text-gray-400 hover:text-primary transition-colors cursor-pointer">Experiencia</a>
+            <a (click)="scrollToSection('experiencia')" class="text-gray-400 hover:text-primary transition-colors cursor-pointer">{{ 'navbar.experience' | translate }}</a>
           </li>
           <li>
-            <a (click)="scrollToSection('skills')" class="text-gray-400 hover:text-primary transition-colors cursor-pointer">Skills</a>
+            <a (click)="scrollToSection('skills')" class="text-gray-400 hover:text-primary transition-colors cursor-pointer">{{ 'navbar.skills' | translate }}</a>
           </li>
           <li>
-            <a (click)="scrollToSection('educacion')" class="text-gray-400 hover:text-primary transition-colors cursor-pointer">Educación</a>
+            <a (click)="scrollToSection('educacion')" class="text-gray-400 hover:text-primary transition-colors cursor-pointer">{{ 'navbar.education' | translate }}</a>
           </li>
           <li>
-            <a (click)="scrollToSection('contacto')" class="text-gray-400 hover:text-primary transition-colors cursor-pointer">Contacto</a>
+            <a (click)="scrollToSection('contacto')" class="text-gray-400 hover:text-primary transition-colors cursor-pointer">{{ 'navbar.contact' | translate }}</a>
           </li>
         </ul>
       </div>
 
       <!-- Contact Info -->
       <div>
-        <h3 class="text-white font-semibold mb-4">Contacto</h3>
+        <h3 class="text-white font-semibold mb-4">{{ 'footer.contact' | translate }}</h3>
         <ul class="space-y-2 text-gray-400 text-sm">
           <li class="flex items-center gap-2">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
             </svg>
-            Cartagena, Colombia
+            {{ 'common.location' | translate }}
           </li>
           <li class="flex items-center gap-2">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -79,12 +79,12 @@
     <!-- Bottom Bar -->
     <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
       <p class="text-gray-400 text-sm">
-        © {{ currentYear }} Jesus David Ribon Batista. Todos los derechos reservados.
+        © {{ currentYear }} Jesus David Ribon Batista. {{ 'footer.rights' | translate }}
       </p>
       <button 
         (click)="scrollToTop()"
         class="flex items-center gap-2 text-gray-400 hover:text-primary transition-colors">
-        <span class="text-sm">Volver arriba</span>
+        <span class="text-sm">{{ 'footer.backToTop' | translate }}</span>
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
         </svg>
