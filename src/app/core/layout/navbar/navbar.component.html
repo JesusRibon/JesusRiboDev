@@ -1,14 +1,15 @@
-<nav [class]="'fixed top-0 w-full z-50 transition-all duration-300 ' + (scrolled() ? 'bg-dark/95 backdrop-blur-md shadow-lg' : 'bg-dark/80 backdrop-blur-sm')">
+<nav class="fixed top-0 w-full z-50 transition-all duration-300"
+     [ngClass]="scrolled() ? 'bg-white/95 dark:bg-dark/95 backdrop-blur-md shadow-sm dark:shadow-lg' : 'bg-white/80 dark:bg-dark/80 backdrop-blur-sm'">
   <div class="container-custom h-16 flex items-center justify-between">
     
     <!-- Logo -->
-    <a (click)="scrollToSection('inicio')" class="flex items-center gap-2 text-white font-bold cursor-pointer hover:opacity-80 transition-opacity">
+    <a (click)="scrollToSection('inicio')" class="flex items-center gap-2 text-gray-900 dark:text-white font-bold cursor-pointer hover:opacity-80 transition-opacity">
       <!-- <span class="bg-primary w-10 h-10 rounded-lg flex items-center justify-center text-lg font-extrabold">JDRB</span> -->
       <span class="hidden sm:block">Jesus Ribon</span>
     </a>
 
     <!-- Desktop menu -->
-    <ul class="hidden md:flex gap-8 text-gray-300 items-center">
+    <ul class="hidden md:flex gap-8 text-gray-600 dark:text-gray-300 items-center">
       <li>
         <a (click)="scrollToSection('inicio')" class="hover:text-primary transition-colors cursor-pointer">{{ 'navbar.home' | translate }}</a>
       </li>
@@ -27,10 +28,20 @@
       <li>
         <a (click)="scrollToSection('contacto')" class="hover:text-primary transition-colors cursor-pointer">{{ 'navbar.contact' | translate }}</a>
       </li>
+      <!-- Theme toggle -->
+      <li class="flex items-center">
+        <button (click)="theme.toggleTheme()" class="p-2 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-dark-light hover:text-gray-900 dark:hover:text-white transition-colors" [attr.aria-label]="theme.isDark() ? 'Modo claro' : 'Modo oscuro'" title="{{ theme.isDark() ? ('theme.light' | translate) : ('theme.dark' | translate) }}">
+          @if (theme.isDark()) {
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+          } @else {
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+          }
+        </button>
+      </li>
       <!-- Language selector -->
-      <li class="flex gap-1 ml-4">
-        <button (click)="switchLanguage('es')" [class]="'px-2 py-1 rounded text-sm font-medium transition-colors ' + (translate.currentLang === 'es' ? 'bg-primary text-white' : 'text-gray-400 hover:text-white')">ES</button>
-        <button (click)="switchLanguage('en')" [class]="'px-2 py-1 rounded text-sm font-medium transition-colors ' + (translate.currentLang === 'en' ? 'bg-primary text-white' : 'text-gray-400 hover:text-white')">EN</button>
+      <li class="flex gap-1 ml-2">
+        <button (click)="switchLanguage('es')" [class]="'px-2 py-1 rounded text-sm font-medium transition-colors ' + (translate.currentLang === 'es' ? 'bg-primary text-white' : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white')">ES</button>
+        <button (click)="switchLanguage('en')" [class]="'px-2 py-1 rounded text-sm font-medium transition-colors ' + (translate.currentLang === 'en' ? 'bg-primary text-white' : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white')">EN</button>
       </li>
     </ul>
 
@@ -40,7 +51,7 @@
     </button>
 
     <!-- Mobile menu button -->
-    <button (click)="toggleMenu()" class="md:hidden text-white p-2 hover:bg-dark-light rounded-lg transition-colors" aria-label="Toggle menu">
+    <button (click)="toggleMenu()" class="md:hidden text-gray-900 dark:text-white p-2 hover:bg-gray-200 dark:hover:bg-dark-light rounded-lg transition-colors" aria-label="Toggle menu">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         @if (!menuOpen()) {
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -53,29 +64,40 @@
 
   <!-- Mobile menu drawer -->
   @if (menuOpen()) {
-    <div class="md:hidden bg-dark-light border-t border-white/10 animate-slide-down">
+    <div class="md:hidden bg-gray-100 dark:bg-dark-light border-t border-gray-200 dark:border-white/10 animate-slide-down">
       <ul class="flex flex-col p-4 gap-2">
         <li>
-          <a (click)="scrollToSection('inicio')" class="block px-4 py-3 text-gray-300 hover:text-primary hover:bg-dark-lighter rounded-lg transition-colors cursor-pointer">{{ 'navbar.home' | translate }}</a>
+          <a (click)="scrollToSection('inicio')" class="block px-4 py-3 text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-gray-200 dark:hover:bg-dark-lighter rounded-lg transition-colors cursor-pointer">{{ 'navbar.home' | translate }}</a>
         </li>
         <li>
-          <a (click)="scrollToSection('sobre-mi')" class="block px-4 py-3 text-gray-300 hover:text-primary hover:bg-dark-lighter rounded-lg transition-colors cursor-pointer">{{ 'navbar.about' | translate }}</a>
+          <a (click)="scrollToSection('sobre-mi')" class="block px-4 py-3 text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-gray-200 dark:hover:bg-dark-lighter rounded-lg transition-colors cursor-pointer">{{ 'navbar.about' | translate }}</a>
         </li>
         <li>
-          <a (click)="scrollToSection('experiencia')" class="block px-4 py-3 text-gray-300 hover:text-primary hover:bg-dark-lighter rounded-lg transition-colors cursor-pointer">{{ 'navbar.experience' | translate }}</a>
+          <a (click)="scrollToSection('experiencia')" class="block px-4 py-3 text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-gray-200 dark:hover:bg-dark-lighter rounded-lg transition-colors cursor-pointer">{{ 'navbar.experience' | translate }}</a>
         </li>
         <li>
-          <a (click)="scrollToSection('skills')" class="block px-4 py-3 text-gray-300 hover:text-primary hover:bg-dark-lighter rounded-lg transition-colors cursor-pointer">{{ 'navbar.skills' | translate }}</a>
+          <a (click)="scrollToSection('skills')" class="block px-4 py-3 text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-gray-200 dark:hover:bg-dark-lighter rounded-lg transition-colors cursor-pointer">{{ 'navbar.skills' | translate }}</a>
         </li>
         <li>
-          <a (click)="scrollToSection('educacion')" class="block px-4 py-3 text-gray-300 hover:text-primary hover:bg-dark-lighter rounded-lg transition-colors cursor-pointer">{{ 'navbar.education' | translate }}</a>
+          <a (click)="scrollToSection('educacion')" class="block px-4 py-3 text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-gray-200 dark:hover:bg-dark-lighter rounded-lg transition-colors cursor-pointer">{{ 'navbar.education' | translate }}</a>
         </li>
         <li>
-          <a (click)="scrollToSection('contacto')" class="block px-4 py-3 text-gray-300 hover:text-primary hover:bg-dark-lighter rounded-lg transition-colors cursor-pointer">{{ 'navbar.contact' | translate }}</a>
+          <a (click)="scrollToSection('contacto')" class="block px-4 py-3 text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-gray-200 dark:hover:bg-dark-lighter rounded-lg transition-colors cursor-pointer">{{ 'navbar.contact' | translate }}</a>
         </li>
         <li class="flex gap-2 pt-2">
-          <button (click)="switchLanguage('es')" [class]="'flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ' + (translate.currentLang === 'es' ? 'bg-primary text-white' : 'bg-dark-lighter text-gray-400 hover:text-white')">ES</button>
-          <button (click)="switchLanguage('en')" [class]="'flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ' + (translate.currentLang === 'en' ? 'bg-primary text-white' : 'bg-dark-lighter text-gray-400 hover:text-white')">EN</button>
+          <button (click)="theme.toggleTheme()" class="flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm font-medium bg-gray-200 dark:bg-dark-lighter text-gray-700 dark:text-gray-400 hover:text-primary">
+            @if (theme.isDark()) {
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4  0 018 0z"></path></svg>
+              {{ 'theme.light' | translate }}
+            } @else {
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+              {{ 'theme.dark' | translate }}
+            }
+          </button>
+        </li>
+        <li class="flex gap-2 pt-2">
+          <button (click)="switchLanguage('es')" [class]="'flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ' + (translate.currentLang === 'es' ? 'bg-primary text-white' : 'bg-gray-200 dark:bg-dark-lighter text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white')">ES</button>
+          <button (click)="switchLanguage('en')" [class]="'flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ' + (translate.currentLang === 'en' ? 'bg-primary text-white' : 'bg-gray-200 dark:bg-dark-lighter text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white')">EN</button>
         </li>
         <li class="pt-2">
           <button (click)="scrollToSection('contacto')" class="w-full bg-primary hover:bg-primary-dark px-6 py-3 rounded-lg text-white font-medium transition-colors">

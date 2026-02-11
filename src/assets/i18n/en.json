@@ -1,4 +1,8 @@
 {
+  "theme": {
+    "light": "Light mode",
+    "dark": "Dark mode"
+  },
   "navbar": {
     "home": "Home",
     "about": "About me",

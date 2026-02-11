@@ -1,6 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <script>
+    (function() {
+      var stored = localStorage.getItem('jesus-ribo-theme');
+      var dark = stored === 'dark' || (!stored && !window.matchMedia || !window.matchMedia('(prefers-color-scheme: light)').matches);
+      if (dark) document.documentElement.classList.add('dark');
+      else document.documentElement.classList.remove('dark');
+    })();
+  </script>
   <meta charset="utf-8">
   <title>Jesús David Ribón Batista - Full Stack Developer</title>
   <base href="/">

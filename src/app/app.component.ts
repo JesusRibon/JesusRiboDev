@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { ThemeService } from './core/services/theme.service';
 import { NavbarComponent } from './core/layout/navbar/navbar.component';
 import { FooterComponent } from './core/layout/footer/footer.component';
 
@@ -14,7 +15,10 @@ import { FooterComponent } from './core/layout/footer/footer.component';
 export class AppComponent {
   title = 'JesusRiboDev';
 
-  constructor(private translate: TranslateService) {
+  constructor(
+    private translate: TranslateService,
+    private theme: ThemeService
+  ) {
     this.translate.setFallbackLang('es');
     this.translate.use('es');
   }

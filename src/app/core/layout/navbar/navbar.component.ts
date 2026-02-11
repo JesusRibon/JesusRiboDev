@@ -1,6 +1,7 @@
 import { Component, signal, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +14,10 @@ export class NavbarComponent {
   menuOpen = signal(false);
   scrolled = signal(false);
 
-  constructor(public translate: TranslateService) {}
+  constructor(
+    public translate: TranslateService,
+    public theme: ThemeService
+  ) {}
 
   @HostListener('window:scroll', [])
   onWindowScroll() {

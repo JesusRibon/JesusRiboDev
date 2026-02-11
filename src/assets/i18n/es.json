@@ -1,4 +1,8 @@
 {
+  "theme": {
+    "light": "Modo claro",
+    "dark": "Modo oscuro"
+  },
   "navbar": {
     "home": "Inicio",
     "about": "Sobre mí",
